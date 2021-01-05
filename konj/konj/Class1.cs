@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Npgsql;
 using System.Configuration;
 
+
 namespace konj
 {
         
@@ -13,7 +14,7 @@ namespace konj
         {
             public static string connect()
             {
-                var uriString = ConfigurationManager.AppSettings["ELEPHANTSQL_URL"] ?? "postgres://gqacvxla:FQ7xgQaI0YV-IGCJiaLDY7oUjFnoYBPx@kandula.db.elephantsql.com:5432/gqacvxla";
+                var uriString = ConfigurationManager.AppSettings["ELEPHANTSQL_URL"] ?? "postgres://aqjettlx:RH7eUDXFOqHHu2u0CwpO0FSOQWSnZNDt@kandula.db.elephantsql.com:5432/aqjettlx";
                 var uri = new Uri(uriString);
                 var db = uri.AbsolutePath.Trim('/');
                 var user = uri.UserInfo.Split(':')[0];
