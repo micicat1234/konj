@@ -14,6 +14,8 @@ namespace konj
 {
     public partial class Form1 : Form
     {
+        string connect = BazaConn.connect();
+
         public Form1()
         {
             InitializeComponent();
@@ -40,6 +42,37 @@ namespace konj
             Form2 registracija = new Form2();
             registracija.Show();
             this.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string ime = Ime.Text;
+            string geslo = Geslo.Text;
+
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT Prijava('" + ime + "', '" + geslo + "')", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+                    int stevilo = reader.GetInt32(0);
+
+                    if(stevilo == 0)
+                    {
+                        MessageBox.Show("Podatki se ne ujemajo!");
+                    }
+                    else if(stevilo ==1)
+                    {
+                        Form3 japjap = new Form3();
+                        japjap.Show();
+                        this.Hide();
+                    }
+                }
+
+                con.Close();
+            }
         }
     }
     

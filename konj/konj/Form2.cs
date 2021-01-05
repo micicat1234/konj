@@ -62,6 +62,7 @@ namespace konj
             string ime = comboBox1.SelectedItem.ToString();
             string geslo = Geslo.Text;
 
+            //Registracija ali menjanje gesla
             using (NpgsqlConnection con = new NpgsqlConnection(connect))
             {
                 con.Open();

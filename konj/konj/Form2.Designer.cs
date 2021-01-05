@@ -40,7 +40,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(204, 289);
+            this.button1.Location = new System.Drawing.Point(186, 315);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(155, 48);
             this.button1.TabIndex = 12;
@@ -52,7 +52,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(134, 224);
+            this.label3.Location = new System.Drawing.Point(135, 238);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 25);
             this.label3.TabIndex = 11;
@@ -60,7 +60,7 @@
             // 
             // Geslo
             // 
-            this.Geslo.Location = new System.Drawing.Point(228, 228);
+            this.Geslo.Location = new System.Drawing.Point(229, 242);
             this.Geslo.Name = "Geslo";
             this.Geslo.Size = new System.Drawing.Size(178, 22);
             this.Geslo.TabIndex = 10;
@@ -69,7 +69,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(134, 169);
+            this.label2.Location = new System.Drawing.Point(135, 183);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(50, 25);
             this.label2.TabIndex = 9;
@@ -77,18 +77,17 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(145, 55);
+            this.label1.Location = new System.Drawing.Point(114, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(261, 51);
+            this.label1.Size = new System.Drawing.Size(342, 121);
             this.label1.TabIndex = 7;
-            this.label1.Text = "Registracija";
+            this.label1.Text = "Registracija in menjanje gesla";
             // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(228, 169);
+            this.comboBox1.Location = new System.Drawing.Point(229, 183);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(178, 24);
             this.comboBox1.TabIndex = 14;

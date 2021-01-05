@@ -9,7 +9,6 @@ using System.Configuration;
 
 namespace konj
 {
-        
         public class BazaConn
         {
             public static string connect()
@@ -24,9 +23,7 @@ namespace konj
                 uri.Host, db, user, passwd, port);
                 return connStr;
             }
-
         }
-        
 }
 
         
