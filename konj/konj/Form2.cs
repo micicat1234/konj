@@ -60,6 +60,7 @@ namespace konj
         private void button1_Click(object sender, EventArgs e)
         {
             string ime = comboBox1.SelectedItem.ToString();
+            string priimek = comboBox2.SelectedItem.ToString();
             string geslo = Geslo.Text;
 
             //Registracija ali menjanje gesla
@@ -70,6 +71,26 @@ namespace konj
                 NpgsqlCommand com = new NpgsqlCommand("SELECT Registracija('" + ime + "', '" + geslo + "')", con);
                 com.ExecuteNonQuery();
                 com.Dispose();
+                con.Close();
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string ime = comboBox1.SelectedItem.ToString();
+
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM IzpisPriimkov('" + ime + "')", con);
+                NpgsqlDataReader reader = com.ExecuteReader();
+                while (reader.Read())
+                {
+
+                    comboBox2.Items.Add(reader.GetString(0));
+                }
+
                 con.Close();
             }
         }
