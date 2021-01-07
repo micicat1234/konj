@@ -68,11 +68,14 @@ namespace konj
             {
                 con.Open();
 
-                NpgsqlCommand com = new NpgsqlCommand("SELECT Registracija('" + ime + "', '" + geslo + "')", con);
+                NpgsqlCommand com = new NpgsqlCommand("SELECT Registracija('" + ime + "', '" + geslo + "', '" + priimek + "')", con);
                 com.ExecuteNonQuery();
                 com.Dispose();
                 con.Close();
             }
+
+            comboBox2.SelectedIndex = -1;
+            Geslo.Text = "";
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
