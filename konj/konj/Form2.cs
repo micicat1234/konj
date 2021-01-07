@@ -14,6 +14,8 @@ namespace konj
 {
     public partial class Form2 : Form
     {
+
+        int id_kraja;
         string connect = BazaConn.connect();
 
         public Form2()
@@ -21,14 +23,19 @@ namespace konj
             InitializeComponent();
         }
 
-        //IZPIS IMEN V COMBOBOX
-        public void IzpisImen()
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void Form2_Load(object sender, EventArgs e)
         {
             using (NpgsqlConnection con = new NpgsqlConnection(connect))
             {
                 con.Open();
 
-                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM IzpisImen()", con);
+                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM izpiskrajev()", con);
                 NpgsqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
                 {
@@ -40,16 +47,6 @@ namespace konj
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void Form2_Load(object sender, EventArgs e)
-        {
-            IzpisImen();
-        }
-
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Form1 prijava = new Form1();
@@ -59,43 +56,39 @@ namespace konj
 
         private void button1_Click(object sender, EventArgs e)
         {
-            string ime = comboBox1.SelectedItem.ToString();
-            string priimek = comboBox2.SelectedItem.ToString();
-            string geslo = Geslo.Text;
-
-            //Registracija ali menjanje gesla
-            using (NpgsqlConnection con = new NpgsqlConnection(connect))
-            {
-                con.Open();
-
-                NpgsqlCommand com = new NpgsqlCommand("SELECT Registracija('" + ime + "', '" + geslo + "', '" + priimek + "')", con);
-                com.ExecuteNonQuery();
-                com.Dispose();
-                con.Close();
-            }
-
-            comboBox2.SelectedIndex = -1;
-            Geslo.Text = "";
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            string ime = comboBox1.SelectedItem.ToString();
+            //Registracija
 
             using (NpgsqlConnection con = new NpgsqlConnection(connect))
             {
-                con.Open();
+                //id kraja
+                string ime_kraja = comboBox1.SelectedItem.ToString();
 
-                NpgsqlCommand com = new NpgsqlCommand("SELECT * FROM IzpisPriimkov('" + ime + "')", con);
+                con.Open();
+                NpgsqlCommand com = new NpgsqlCommand("SELECT DobitKrajid('" + ime_kraja + "')", con);
                 NpgsqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
                 {
 
-                    comboBox2.Items.Add(reader.GetString(0));
+                    id_kraja = reader.GetInt32(0);
                 }
+                con.Close();
 
+                //vpiše notr
+                con.Open();
+                NpgsqlCommand aha = new NpgsqlCommand("SELECT Registracija('" + Ime.Text + "', '" + Geslo.Text + "', '" + Priimek.Text + "','" + id_kraja + "')", con);
+                aha.ExecuteNonQuery();
+                aha.Dispose();
                 con.Close();
             }
+
+            Form1 prijava = new Form1();
+            prijava.Show();
+            this.Hide();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

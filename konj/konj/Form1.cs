@@ -47,13 +47,14 @@ namespace konj
         private void button1_Click(object sender, EventArgs e)
         {
             string ime = Ime.Text;
+            string priimek = Priimek.Text;
             string geslo = Geslo.Text;
 
             using (NpgsqlConnection con = new NpgsqlConnection(connect))
             {
                 con.Open();
 
-                NpgsqlCommand com = new NpgsqlCommand("SELECT Prijava('" + ime + "', '" + geslo + "')", con);
+                NpgsqlCommand com = new NpgsqlCommand("SELECT Prijava('" + ime + "', '" + geslo + "', '" + priimek + "')", con);
                 NpgsqlDataReader reader = com.ExecuteReader();
                 while (reader.Read())
                 {
@@ -73,6 +74,13 @@ namespace konj
 
                 con.Close();
             }
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Form4 japjap = new Form4();
+            japjap.Show();
+            this.Hide();
         }
     }
     
