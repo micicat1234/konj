@@ -154,7 +154,7 @@ namespace konj
             }
 
             comboBox1.Items.Clear();
-            comboBox1.SelectedIndex = -2;
+            comboBox1.SelectedIndex = -1;
             comboBox2.SelectedIndex = -1;
             comboBox3.SelectedIndex = -1;
             Ime.Text = "";
