@@ -1,6 +1,6 @@
 ﻿namespace konj
 {
-    partial class Form2
+    partial class Registracija
     {
         /// <summary>
         /// Required designer variable.
@@ -142,7 +142,7 @@
             this.comboBox1.Size = new System.Drawing.Size(178, 24);
             this.comboBox1.TabIndex = 21;
             // 
-            // Form2
+            // Registracija
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -158,8 +158,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Ime);
             this.Controls.Add(this.label1);
-            this.Name = "Form2";
-            this.Text = "Form2";
+            this.Name = "Registracija";
+            this.Text = "Registracija";
             this.Load += new System.EventHandler(this.Form2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

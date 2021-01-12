@@ -12,17 +12,17 @@ using System.Configuration;
 
 namespace konj
 {
-    public partial class Form3 : Form
+    public partial class Zobozdravniki : Form
     {
         int id_kraja;
         string connect = BazaConn.connect();
 
-        public Form3()
+        public Zobozdravniki()
         {
             InitializeComponent();
         }
 
-        private void Update()
+        private void Updatee()
         {
             using (NpgsqlConnection con = new NpgsqlConnection(connect))
             {
@@ -61,7 +61,7 @@ namespace konj
             Priimek.Enabled = false;
             Geslo.Enabled = false;
 
-            Update();
+            Updatee();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -139,7 +139,7 @@ namespace konj
             Ime.Text = "";
             Priimek.Text = "";
             Geslo.Text = "";
-            Update();
+            Updatee();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -160,7 +160,7 @@ namespace konj
             Ime.Text = "";
             Priimek.Text = "";
             Geslo.Text = "";
-            Update();
+            Updatee();
         }
     }
 }

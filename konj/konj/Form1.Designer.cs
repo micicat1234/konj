@@ -1,6 +1,6 @@
 ﻿namespace konj
 {
-    partial class Form1
+    partial class Prijava
     {
         /// <summary>
         /// Required designer variable.
@@ -38,6 +38,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.Priimek = new System.Windows.Forms.TextBox();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -136,11 +137,22 @@
             this.linkLabel2.Text = "Pozabljeno geslo?";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
-            // Form1
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(32, 411);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(255, 86);
+            this.button2.TabIndex = 21;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click_1);
+            // 
+            // Prijava
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(548, 523);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.Priimek);
@@ -151,8 +163,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.Ime);
             this.Controls.Add(this.label1);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "Prijava";
+            this.Text = "Prijava";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -171,6 +183,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox Priimek;
         private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.Button button2;
     }
 }
 

@@ -1,6 +1,6 @@
 ﻿namespace konj
 {
-    partial class Form4
+    partial class Menjava_gesla
     {
         /// <summary>
         /// Required designer variable.
@@ -125,7 +125,7 @@
             this.linkLabel1.Text = "Ste se spomnili gesla?";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // Form4
+            // Menjava_gesla
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -139,8 +139,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Name = "Form4";
-            this.Text = "Form4";
+            this.Name = "Menjava_gesla";
+            this.Text = "Menjava gesla";
             this.Load += new System.EventHandler(this.Form4_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

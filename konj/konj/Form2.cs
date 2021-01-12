@@ -12,13 +12,13 @@ using System.Configuration;
 
 namespace konj
 {
-    public partial class Form2 : Form
+    public partial class Registracija : Form
     {
 
         int id_kraja;
         string connect = BazaConn.connect();
 
-        public Form2()
+        public Registracija()
         {
             InitializeComponent();
         }
@@ -49,7 +49,7 @@ namespace konj
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Form1 prijava = new Form1();
+            Prijava prijava = new Prijava();
             prijava.Show();
             this.Hide();
         }
@@ -81,7 +81,7 @@ namespace konj
                 con.Close();
             }
 
-            Form1 prijava = new Form1();
+            Prijava prijava = new Prijava();
             prijava.Show();
             this.Hide();
         }

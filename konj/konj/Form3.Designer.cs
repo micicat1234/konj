@@ -1,6 +1,6 @@
 ﻿namespace konj
 {
-    partial class Form3
+    partial class Zobozdravniki
     {
         /// <summary>
         /// Required designer variable.
@@ -159,7 +159,7 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(476, 282);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(180, 67);
+            this.button2.Size = new System.Drawing.Size(180, 77);
             this.button2.TabIndex = 37;
             this.button2.Text = "Izbriši zobozdravnika";
             this.button2.UseVisualStyleBackColor = true;
@@ -173,7 +173,7 @@
             this.comboBox3.Size = new System.Drawing.Size(169, 24);
             this.comboBox3.TabIndex = 38;
             // 
-            // Form3
+            // Zobozdravniki
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -192,8 +192,8 @@
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
-            this.Name = "Form3";
-            this.Text = "Form3";
+            this.Name = "Zobozdravniki";
+            this.Text = "Zobozdravniki";
             this.Load += new System.EventHandler(this.Form3_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
