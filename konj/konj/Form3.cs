@@ -125,7 +125,6 @@ namespace konj
 
                 con.Close();
 
-
                 con.Open();
                 NpgsqlCommand aha = new NpgsqlCommand("SELECT posodobizobozdravnika('" + comboBox1.SelectedItem + "', '" + Ime.Text + "', '" + comboBox2.SelectedItem + "', '" + Priimek.Text + "', '" + Geslo.Text + "', '" + id_kraja + "')", con);
                 aha.ExecuteNonQuery();

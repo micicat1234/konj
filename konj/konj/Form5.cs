@@ -114,6 +114,9 @@ namespace konj
                 ahda.Dispose();
                 con.Close();
             }
+
+            textBox3.Text = "";
+            textBox4.Text = "";
         }
     }
 }

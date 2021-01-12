@@ -193,7 +193,7 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label1);
             this.Name = "Zobozdravniki";
-            this.Text = "Zobozdravniki";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.Form3_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
