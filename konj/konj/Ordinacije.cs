@@ -16,6 +16,7 @@ namespace konj
     {
         string connect = BazaConn.connect();
         int kraj, zdravnik;
+        string priimek;
         public Ordinacije()
         {
             InitializeComponent();
@@ -46,7 +47,26 @@ namespace konj
                 }
 
                 con.Close();
+
+                con.Open();
+
+                NpgsqlCommand aha = new NpgsqlCommand("SELECT * FROM izpisimen()", con);
+                NpgsqlDataReader lja = aha.ExecuteReader();
+                while (lja.Read())
+                {
+                    comboBox2.Items.Add(lja.GetString(0));
+                }
+
+                con.Close();
+
+
             }
+        }
+
+        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -74,6 +94,19 @@ namespace konj
                 while (jda.Read())
                 {
                     comboBox4.SelectedItem = jda.GetString(0);
+                }
+
+                con.Close();
+
+                con.Open();
+
+                NpgsqlCommand ahsaa = new NpgsqlCommand("SELECT * FROM dobitzdravnika('" + zdravnik + "')", con);
+                NpgsqlDataReader jdaa = ahsaa.ExecuteReader();
+                while (jdaa.Read())
+                {
+                    comboBox2.SelectedItem = jdaa.GetString(0);
+                    comboBox3.SelectedItem = jdaa.GetString(1);
+
                 }
 
                 con.Close();
