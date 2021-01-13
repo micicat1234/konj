@@ -59,6 +59,16 @@ namespace konj
 
                 con.Close();
 
+                con.Open();
+
+                NpgsqlCommand ss = new NpgsqlCommand("SELECT * FROM priimki()", con);
+                NpgsqlDataReader aa = ss.ExecuteReader();
+                while (aa.Read())
+                {
+                    comboBox3.Items.Add(aa.GetString(0));
+                }
+
+                con.Close();
 
             }
         }
