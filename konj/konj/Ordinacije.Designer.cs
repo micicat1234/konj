@@ -38,10 +38,9 @@
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.comboBox4 = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.Krajtextbox = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.Posta = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
@@ -49,10 +48,13 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.Ime = new System.Windows.Forms.TextBox();
             this.comboBox5 = new System.Windows.Forms.ComboBox();
             this.comboBox6 = new System.Windows.Forms.ComboBox();
             this.comboBox7 = new System.Windows.Forms.ComboBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,39 +150,29 @@
             this.comboBox4.Size = new System.Drawing.Size(152, 24);
             this.comboBox4.TabIndex = 20;
             // 
-            // label5
+            // Krajtextbox
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(1003, 406);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 29);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "Kraj:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(1099, 411);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(151, 22);
-            this.textBox2.TabIndex = 22;
+            this.Krajtextbox.Location = new System.Drawing.Point(850, 278);
+            this.Krajtextbox.Name = "Krajtextbox";
+            this.Krajtextbox.Size = new System.Drawing.Size(151, 22);
+            this.Krajtextbox.TabIndex = 22;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(1003, 485);
+            this.label7.Location = new System.Drawing.Point(666, 340);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(80, 29);
             this.label7.TabIndex = 23;
             this.label7.Text = "Posta:";
             // 
-            // textBox3
+            // Posta
             // 
-            this.textBox3.Location = new System.Drawing.Point(1099, 492);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(151, 22);
-            this.textBox3.TabIndex = 24;
+            this.Posta.Location = new System.Drawing.Point(848, 347);
+            this.Posta.Name = "Posta";
+            this.Posta.Size = new System.Drawing.Size(154, 22);
+            this.Posta.TabIndex = 24;
             // 
             // pictureBox1
             // 
@@ -198,8 +190,9 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(158, 72);
             this.button2.TabIndex = 40;
-            this.button2.Text = "Izbriši kraj";
+            this.button2.Text = "Izbriši ordinacijo";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
@@ -210,6 +203,7 @@
             this.button1.TabIndex = 39;
             this.button1.Text = "Shrani spremembe";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label8
             // 
@@ -252,19 +246,19 @@
             this.label11.TabIndex = 42;
             this.label11.Text = "Ime:";
             // 
-            // textBox4
+            // Ime
             // 
-            this.textBox4.Location = new System.Drawing.Point(848, 147);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(151, 22);
-            this.textBox4.TabIndex = 45;
+            this.Ime.Location = new System.Drawing.Point(848, 147);
+            this.Ime.Name = "Ime";
+            this.Ime.Size = new System.Drawing.Size(151, 22);
+            this.Ime.TabIndex = 45;
             // 
             // comboBox5
             // 
             this.comboBox5.FormattingEnabled = true;
-            this.comboBox5.Location = new System.Drawing.Point(850, 212);
+            this.comboBox5.Location = new System.Drawing.Point(848, 212);
             this.comboBox5.Name = "comboBox5";
-            this.comboBox5.Size = new System.Drawing.Size(152, 24);
+            this.comboBox5.Size = new System.Drawing.Size(154, 24);
             this.comboBox5.TabIndex = 47;
             this.comboBox5.SelectedIndexChanged += new System.EventHandler(this.comboBox5_SelectedIndexChanged);
             // 
@@ -279,20 +273,57 @@
             // comboBox7
             // 
             this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(850, 276);
+            this.comboBox7.Location = new System.Drawing.Point(848, 276);
             this.comboBox7.Name = "comboBox7";
-            this.comboBox7.Size = new System.Drawing.Size(152, 24);
+            this.comboBox7.Size = new System.Drawing.Size(154, 24);
             this.comboBox7.TabIndex = 48;
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(835, 436);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(189, 91);
+            this.button3.TabIndex = 49;
+            this.button3.Text = "Dodaj ordinacijo";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.LinkColor = System.Drawing.Color.Blue;
+            this.linkLabel1.Location = new System.Drawing.Point(1018, 278);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(195, 17);
+            this.linkLabel1.TabIndex = 50;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Vašega kraja ni na seznamu?";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.LinkColor = System.Drawing.Color.Blue;
+            this.linkLabel2.Location = new System.Drawing.Point(1018, 281);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(231, 17);
+            this.linkLabel2.TabIndex = 51;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "Ste ugotovili, da je bil na seznamu?";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // Ordinacije
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1334, 591);
+            this.Controls.Add(this.linkLabel2);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.comboBox7);
             this.Controls.Add(this.comboBox5);
             this.Controls.Add(this.comboBox6);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.Ime);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label11);
@@ -300,10 +331,9 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.Posta);
             this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label5);
+            this.Controls.Add(this.Krajtextbox);
             this.Controls.Add(this.comboBox4);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.label4);
@@ -335,10 +365,9 @@
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox comboBox4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox Krajtextbox;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox Posta;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
@@ -346,9 +375,12 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox Ime;
         private System.Windows.Forms.ComboBox comboBox5;
         private System.Windows.Forms.ComboBox comboBox6;
         private System.Windows.Forms.ComboBox comboBox7;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel linkLabel2;
     }
 }

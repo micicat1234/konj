@@ -15,14 +15,47 @@ namespace konj
     public partial class Ordinacije : Form
     {
         string connect = BazaConn.connect();
-        int kraj, zdravnik;
+        int kraj, zdravnik, krajj, zdravnikk;
         public Ordinacije()
         {
             InitializeComponent();
         }
 
+        public void dobitajdija()
+        {
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand aha = new NpgsqlCommand("SELECT dobitidzdravnika('" + comboBox2.SelectedItem + "', '" + comboBox3.SelectedItem + "')", con);
+                NpgsqlDataReader ja = aha.ExecuteReader();
+                while (ja.Read())
+                {
+                    zdravnikk = ja.GetInt32(0);
+                }
+
+                con.Close();
+
+                con.Open();
+
+                NpgsqlCommand ahaa = new NpgsqlCommand("SELECT dobitkrajid('" + comboBox4.SelectedItem + "')", con);
+                NpgsqlDataReader jaa = ahaa.ExecuteReader();
+                while (jaa.Read())
+                {
+                    krajj = jaa.GetInt32(0);
+                }
+
+                con.Close();
+            }
+        }
+
+
         private void Ordinacije_Load(object sender, EventArgs e)
         {
+            label7.Visible = false;
+            Posta.Visible = false;
+            Krajtextbox.Visible = false;
+
             using (NpgsqlConnection con = new NpgsqlConnection(connect))
             {
                 con.Open();
@@ -76,7 +109,6 @@ namespace konj
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
 
         }
 
@@ -94,6 +126,56 @@ namespace konj
                 }
 
                 con.Close();
+            }
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            label7.Visible = true;
+            Posta.Visible = true;
+            Krajtextbox.Visible = true;
+            comboBox7.Visible = false;
+            linkLabel1.Visible = false;
+            linkLabel2.Visible = true;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        { 
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand ahda = new NpgsqlCommand("SELECT izbrisiordinacijo('" + comboBox1.SelectedItem + "');", con);
+                ahda.ExecuteNonQuery();
+                ahda.Dispose();
+                con.Close();
+
+            }
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            label7.Visible = false;
+            Posta.Visible = false;
+            Krajtextbox.Visible = false;
+            comboBox7.Visible = true;
+            linkLabel1.Visible = true;
+            linkLabel2.Visible = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dobitajdija();
+
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand ahda = new NpgsqlCommand("SELECT posodobiordinacijo('" + comboBox1.SelectedItem + "', '" + textBox1.Text + "', " + zdravnikk + "," + krajj + ");", con);
+                ahda.ExecuteNonQuery();
+                ahda.Dispose();
+                con.Close();
+
             }
         }
 
