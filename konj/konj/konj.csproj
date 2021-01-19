@@ -82,6 +82,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="Pregledi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pregledi.Designer.cs">
+      <DependentUpon>Pregledi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Prijava.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Ordinacije.resx">
       <DependentUpon>Ordinacije.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pregledi.resx">
+      <DependentUpon>Pregledi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Prijava.resx">
       <DependentUpon>Prijava.cs</DependentUpon>

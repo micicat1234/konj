@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -55,6 +56,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -273,7 +275,7 @@
             // comboBox7
             // 
             this.comboBox7.FormattingEnabled = true;
-            this.comboBox7.Location = new System.Drawing.Point(848, 276);
+            this.comboBox7.Location = new System.Drawing.Point(850, 278);
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(154, 24);
             this.comboBox7.TabIndex = 48;
@@ -287,6 +289,7 @@
             this.button3.TabIndex = 49;
             this.button3.Text = "Dodaj ordinacijo";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // linkLabel1
             // 
@@ -311,6 +314,12 @@
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "Ste ugotovili, da je bil na seznamu?";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // Ordinacije
             // 
@@ -382,5 +391,6 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }

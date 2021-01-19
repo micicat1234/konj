@@ -85,7 +85,7 @@ namespace konj
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            Ordinacije japjap = new Ordinacije();
+            Pregledi japjap = new Pregledi();
             japjap.Show();
             this.Hide();
         }

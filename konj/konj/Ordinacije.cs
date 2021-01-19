@@ -52,6 +52,7 @@ namespace konj
 
         private void Ordinacije_Load(object sender, EventArgs e)
         {
+            linkLabel2.Visible = false;
             label7.Visible = false;
             Posta.Visible = false;
             Krajtextbox.Visible = false;
@@ -153,10 +154,68 @@ namespace konj
             }
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand aha = new NpgsqlCommand("SELECT dobitidzdravnika('" + comboBox5.SelectedItem + "', '" + comboBox6.SelectedItem + "')", con);
+                NpgsqlDataReader ja = aha.ExecuteReader();
+                while (ja.Read())
+                {
+                    zdravnikk = ja.GetInt32(0);
+                }
+
+                con.Close();
+
+            }
+
+            if (Posta.Text == "")
+            {
+
+                using (NpgsqlConnection con = new NpgsqlConnection(connect))
+                {
+
+                    con.Open();
+
+                    NpgsqlCommand ahaa = new NpgsqlCommand("SELECT dobitkrajid('" + comboBox7.SelectedItem + "')", con);
+                    NpgsqlDataReader jaa = ahaa.ExecuteReader();
+                    while (jaa.Read())
+                    {
+                        krajj = jaa.GetInt32(0);
+                    }
+
+                    con.Close();
+
+                    con.Open();
+
+                    NpgsqlCommand ahda = new NpgsqlCommand("SELECT dodatordinacijo('" + Ime.Text + "', '" + zdravnikk + "', '" + krajj + "');", con);
+                    ahda.ExecuteNonQuery();
+                    ahda.Dispose();
+                    con.Close();
+                }
+
+            }
+            else
+            {
+                using (NpgsqlConnection con = new NpgsqlConnection(connect))
+                {
+                    con.Open();
+
+                    NpgsqlCommand ahda = new NpgsqlCommand("SELECT dodatordinacijoinkraj('" + Ime.Text + "', '" + zdravnikk + "', '" + Krajtextbox.Text + "', '" +Convert.ToInt32(Posta.Text) + "');", con);
+                    ahda.ExecuteNonQuery();
+                    ahda.Dispose();
+                    con.Close();
+                }
+            }
+        }
+
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             label7.Visible = false;
             Posta.Visible = false;
+            Posta.Text = "";
             Krajtextbox.Visible = false;
             comboBox7.Visible = true;
             linkLabel1.Visible = true;
@@ -171,7 +230,12 @@ namespace konj
             {
                 con.Open();
 
-                NpgsqlCommand ahda = new NpgsqlCommand("SELECT posodobiordinacijo('" + comboBox1.SelectedItem + "', '" + textBox1.Text + "', " + zdravnikk + "," + krajj + ");", con);
+                string select = "SELECT posodobiordinacijo('" + comboBox1.SelectedItem + "', '" + textBox1.Text + "', " + krajj + "," + zdravnikk + ");";
+                textBox2.Text = select;
+                MessageBox.Show(select);
+
+                NpgsqlCommand ahda = new NpgsqlCommand(select , con);
+
                 ahda.ExecuteNonQuery();
                 ahda.Dispose();
                 con.Close();
