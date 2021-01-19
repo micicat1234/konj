@@ -27,6 +27,8 @@ namespace konj
 
         private void Pregledi_Load(object sender, EventArgs e)
         {
+            textBox4.Enabled = false;
+
             using (NpgsqlConnection con = new NpgsqlConnection(connect))
             {
                 con.Open();
@@ -81,6 +83,41 @@ namespace konj
 
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand aha = new NpgsqlCommand("SELECT dobitidzdravnika('" + comboBox2.SelectedItem + "', '" + comboBox3.SelectedItem + "')", con);
+                NpgsqlDataReader pff = aha.ExecuteReader();
+                while (pff.Read())
+                {
+                    zdravnik = pff.GetInt32(0);
+                }
+
+                con.Close();
+
+                con.Open();
+
+                NpgsqlCommand ahaa = new NpgsqlCommand("SELECT dobitidordinacije('" + comboBox4.SelectedItem + "')", con);
+                NpgsqlDataReader pffa = ahaa.ExecuteReader();
+                while (pffa.Read())
+                {
+                    ordinacija = pffa.GetInt32(0);
+                }
+
+                con.Close();
+
+                con.Open();
+
+                NpgsqlCommand ahaaa = new NpgsqlCommand("SELECT uredipregled('" + comboBox1.SelectedItem + "', '" + textBox1.Text + "', '" + Convert.ToDouble(textBox2.Text) + "', '" + zdravnik + "', '" + ordinacija + "')", con);
+                ahaaa.ExecuteNonQuery();
+                ahaaa.Dispose();
+                con.Close();
+            }
+        }
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             textBox1.Text = comboBox1.SelectedItem.ToString();
@@ -95,6 +132,7 @@ namespace konj
                 while (pffaa.Read())
                 {
                     textBox2.Text = pffaa.GetDouble(0).ToString();
+                    textBox4.Text = pffaa.GetDateTime(3).ToString();
 
                     zdrv = pffaa.GetInt32(1);
                     ordn = pffaa.GetInt32(2);
