@@ -231,7 +231,6 @@ namespace konj
                 con.Open();
 
                 string select = "SELECT posodobiordinacijo('" + comboBox1.SelectedItem + "', '" + textBox1.Text + "', " + krajj + "," + zdravnikk + ");";
-                textBox2.Text = select;
                 MessageBox.Show(select);
 
                 NpgsqlCommand ahda = new NpgsqlCommand(select , con);
