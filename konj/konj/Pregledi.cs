@@ -116,6 +116,32 @@ namespace konj
                 ahaaa.Dispose();
                 con.Close();
             }
+            comboBox2.SelectedIndex = -1;
+            comboBox3.SelectedIndex = -1;
+            comboBox4.SelectedIndex = -1;
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox4.Text = "";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand aha = new NpgsqlCommand("SELECT izbrisipregled('" + comboBox1.SelectedItem + "')", con);
+                aha.ExecuteNonQuery();
+                aha.Dispose();
+                con.Close();
+                con.Close();
+            }
+            comboBox2.SelectedIndex = -1;
+            comboBox3.SelectedIndex = -1;
+            comboBox4.SelectedIndex = -1;
+            textBox1.Text = "";
+            textBox2.Text = "";
+            textBox4.Text = "";
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
