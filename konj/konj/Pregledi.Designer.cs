@@ -221,6 +221,7 @@
             this.comboBox7.Name = "comboBox7";
             this.comboBox7.Size = new System.Drawing.Size(152, 24);
             this.comboBox7.TabIndex = 49;
+            this.comboBox7.SelectedIndexChanged += new System.EventHandler(this.comboBox7_SelectedIndexChanged);
             // 
             // label9
             // 
@@ -258,6 +259,7 @@
             this.button3.TabIndex = 53;
             this.button3.Text = "Dodaj pregled";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // label2
             // 

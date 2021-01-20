@@ -49,7 +49,7 @@ namespace konj
                 while (lja.Read())
                 {
                     comboBox2.Items.Add(lja.GetString(0));
-                    comboBox5.Items.Add(lja.GetString(0));
+                    comboBox7.Items.Add(lja.GetString(0));
                 }
 
                 con.Close();
@@ -72,6 +72,7 @@ namespace konj
                 while (aaa.Read())
                 {
                     comboBox4.Items.Add(aaa.GetString(0));
+                    comboBox5.Items.Add(aaa.GetString(0));
                 }
 
                 con.Close();
@@ -144,6 +145,58 @@ namespace konj
             textBox4.Text = "";
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand aha = new NpgsqlCommand("SELECT dobitidzdravnika('" + comboBox7.SelectedItem + "', '" + comboBox6.SelectedItem + "')", con);
+                NpgsqlDataReader pff = aha.ExecuteReader();
+                while (pff.Read())
+                {
+                    zdravnik = pff.GetInt32(0);
+                }
+
+                con.Close();
+
+                con.Open();
+
+                NpgsqlCommand ahaaa = new NpgsqlCommand("SELECT dobitidordinacije('" + comboBox5.SelectedItem + "')", con);
+                NpgsqlDataReader pffaa = ahaaa.ExecuteReader();
+                while (pffaa.Read())
+                {
+                    ordinacija = pffaa.GetInt32(0);
+                }
+
+                con.Close();
+
+                con.Open();
+
+                NpgsqlCommand ahaa = new NpgsqlCommand("SELECT dodajpregled('" + textBox5.Text + "', '" +Convert.ToDouble(textBox3.Text) + "', '" + zdravnik + "', '" + ordinacija + "')", con);
+                ahaa.ExecuteNonQuery();
+                ahaa.Dispose();
+                con.Close();
+            }
+            }
+
+        private void comboBox7_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            using (NpgsqlConnection con = new NpgsqlConnection(connect))
+            {
+                con.Open();
+
+                NpgsqlCommand aha = new NpgsqlCommand("SELECT izpispriimkov('" + comboBox7.SelectedItem + "')", con);
+                NpgsqlDataReader pff = aha.ExecuteReader();
+                while (pff.Read())
+                {
+                    comboBox6.Items.Add(pff.GetString(0));
+                }
+
+                con.Close();
+            }
+         }
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             textBox1.Text = comboBox1.SelectedItem.ToString();
@@ -157,7 +210,7 @@ namespace konj
                 NpgsqlDataReader pffaa = ahaaa.ExecuteReader();
                 while (pffaa.Read())
                 {
-                    textBox2.Text = pffaa.GetDouble(0).ToString();
+                    textBox2.Text = pffaa.GetDouble(0).ToString("n2");
                     textBox4.Text = pffaa.GetDateTime(3).ToString();
 
                     zdrv = pffaa.GetInt32(1);
