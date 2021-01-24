@@ -9,16 +9,34 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 using System.Configuration;
+using System.Security.Cryptography;
 
 namespace konj
 {
     public partial class Menjava_gesla : Form
     {
         string connect = BazaConn.connect();
+        string hash = "f0xle@rn";
 
         public Menjava_gesla()
         {
             InitializeComponent();
+        }
+
+        private string kriptiraj(string geslo)
+        {
+            byte[] data = UTF8Encoding.UTF8.GetBytes(geslo);
+            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
+            {
+                byte[] keys = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
+                using (TripleDESCryptoServiceProvider tripleDes = new TripleDESCryptoServiceProvider() { Key = keys, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
+                {
+                    ICryptoTransform transform = tripleDes.CreateEncryptor();
+                    byte[] results = transform.TransformFinalBlock(data, 0, data.Length);
+                    string vrni = Convert.ToBase64String(results, 0, results.Length);
+                    return vrni;
+                }
+            }
         }
 
         private void Form4_Load(object sender, EventArgs e)
@@ -67,7 +85,7 @@ namespace konj
             {
                 con.Open();
 
-                NpgsqlCommand com = new NpgsqlCommand("SELECT menjavagesla('" + comboBox1.SelectedItem.ToString() + "', '" + comboBox2.SelectedItem.ToString() + "', '" + Geslo.Text + "')", con);
+                NpgsqlCommand com = new NpgsqlCommand("SELECT menjavagesla('" + comboBox1.SelectedItem.ToString() + "', '" + comboBox2.SelectedItem.ToString() + "', '" + kriptiraj(Geslo.Text) + "')", con);
                 com.ExecuteNonQuery();
                 com.Dispose();
                 con.Close();

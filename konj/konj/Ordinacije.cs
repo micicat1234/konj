@@ -211,6 +211,13 @@ namespace konj
             }
         }
 
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            MainPage japjap = new MainPage();
+            japjap.Show();
+            this.Hide();
+        }
+
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             label7.Visible = false;

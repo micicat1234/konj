@@ -9,17 +9,51 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 using System.Configuration;
+using System.Security.Cryptography;
 
 namespace konj
 {
     public partial class Zobozdravniki : Form
     {
-        int id_kraja;
+        string hash = "f0xle@rn";
+        int id_kraja, krajj;
         string connect = BazaConn.connect();
 
         public Zobozdravniki()
         {
             InitializeComponent();
+        }
+
+        private string dekriptiraj(string geslo)
+        {
+            byte[] data = Convert.FromBase64String(geslo);
+            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
+            {
+                byte[] keys = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
+                using (TripleDESCryptoServiceProvider tripleDes = new TripleDESCryptoServiceProvider() { Key = keys, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
+                {
+                    ICryptoTransform transform = tripleDes.CreateDecryptor();
+                    byte[] results = transform.TransformFinalBlock(data, 0, data.Length);
+                    string vrni = UTF8Encoding.UTF8.GetString(results);
+                    return vrni;
+                }
+            }
+        }
+
+        private string kriptiraj(string geslo)
+        {
+            byte[] data = UTF8Encoding.UTF8.GetBytes(geslo);
+            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
+            {
+                byte[] keys = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
+                using (TripleDESCryptoServiceProvider tripleDes = new TripleDESCryptoServiceProvider() { Key = keys, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
+                {
+                    ICryptoTransform transform = tripleDes.CreateEncryptor();
+                    byte[] results = transform.TransformFinalBlock(data, 0, data.Length);
+                    string vrni = Convert.ToBase64String(results, 0, results.Length);
+                    return vrni;
+                }
+            }
         }
 
         private void Updatee()
@@ -99,8 +133,19 @@ namespace konj
                 {
                     Ime.Text = ja.GetString(0);
                     Priimek.Text = ja.GetString(1);
-                    Geslo.Text = ja.GetString(2);
-                    comboBox3.SelectedIndex = ja.GetInt32(3) - 1;
+                    Geslo.Text = dekriptiraj(ja.GetString(2));
+                    krajj = ja.GetInt32(3);
+                }
+
+                con.Close();
+
+                con.Open();
+
+                NpgsqlCommand ahdaa = new NpgsqlCommand("SELECT dobitimekraja('" + krajj + "')", con);
+                NpgsqlDataReader jaa = ahdaa.ExecuteReader();
+                while (jaa.Read())
+                {
+                    comboBox3.SelectedItem = jaa.GetString(0);
                 }
 
                 con.Close();
@@ -126,7 +171,7 @@ namespace konj
                 con.Close();
 
                 con.Open();
-                NpgsqlCommand aha = new NpgsqlCommand("SELECT posodobizobozdravnika('" + comboBox1.SelectedItem + "', '" + Ime.Text + "', '" + comboBox2.SelectedItem + "', '" + Priimek.Text + "', '" + Geslo.Text + "', '" + id_kraja + "')", con);
+                NpgsqlCommand aha = new NpgsqlCommand("SELECT posodobizobozdravnika('" + comboBox1.SelectedItem + "', '" + Ime.Text + "', '" + comboBox2.SelectedItem + "', '" + Priimek.Text + "', '" + kriptiraj(Geslo.Text) + "', '" + id_kraja + "')", con);
                 aha.ExecuteNonQuery();
                 aha.Dispose();
                 con.Close();
@@ -165,6 +210,13 @@ namespace konj
         private void label6_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            MainPage japjap = new MainPage();
+            japjap.Show();
+            this.Hide();
         }
     }
 }

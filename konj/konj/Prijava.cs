@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 using System.Configuration;
+using System.Security.Cryptography;
 
 namespace konj
 {
     public partial class Prijava : Form
     {
+        string hash = "f0xle@rn";
         string connect = BazaConn.connect();
 
         public Prijava()
@@ -21,6 +23,21 @@ namespace konj
             InitializeComponent();
         }
 
+        private string kriptiraj(string geslo)
+        {
+            byte[] data = UTF8Encoding.UTF8.GetBytes(geslo);
+            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
+            {
+                byte[] keys = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
+                using (TripleDESCryptoServiceProvider tripleDes = new TripleDESCryptoServiceProvider() { Key = keys, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
+                {
+                    ICryptoTransform transform = tripleDes.CreateEncryptor();
+                    byte[] results = transform.TransformFinalBlock(data, 0, data.Length);
+                    string vrni = Convert.ToBase64String(results, 0, results.Length);
+                    return vrni;
+                }
+            }
+        }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -48,7 +65,7 @@ namespace konj
         {
             string ime = Ime.Text;
             string priimek = Priimek.Text;
-            string geslo = Geslo.Text;
+            string geslo = kriptiraj(Geslo.Text);
 
             using (NpgsqlConnection con = new NpgsqlConnection(connect))
             {
@@ -66,7 +83,7 @@ namespace konj
                     }
                     else if(stevilo ==1)
                     {
-                        Zobozdravniki japjap = new Zobozdravniki();
+                        MainPage japjap = new MainPage();
                         japjap.Show();
                         this.Hide();
                     }
@@ -85,9 +102,7 @@ namespace konj
 
         private void button2_Click_1(object sender, EventArgs e)
         {
-            Pregledi japjap = new Pregledi();
-            japjap.Show();
-            this.Hide();
+            
         }
     }
     

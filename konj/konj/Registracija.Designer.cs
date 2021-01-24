@@ -43,20 +43,22 @@
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(248, 417);
+            this.button1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.button1.Location = new System.Drawing.Point(133, 343);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 48);
+            this.button1.Size = new System.Drawing.Size(216, 74);
             this.button1.TabIndex = 12;
             this.button1.Text = "Potrdi";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(180, 144);
+            this.label3.Location = new System.Drawing.Point(85, 135);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 25);
             this.label3.TabIndex = 11;
@@ -64,7 +66,7 @@
             // 
             // Ime
             // 
-            this.Ime.Location = new System.Drawing.Point(305, 148);
+            this.Ime.Location = new System.Drawing.Point(210, 139);
             this.Ime.Name = "Ime";
             this.Ime.Size = new System.Drawing.Size(178, 22);
             this.Ime.TabIndex = 10;
@@ -72,7 +74,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(220, 36);
+            this.label1.Location = new System.Drawing.Point(113, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(263, 60);
             this.label1.TabIndex = 7;
@@ -81,20 +83,20 @@
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(463, 531);
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Location = new System.Drawing.Point(291, 477);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(178, 25);
+            this.linkLabel1.Size = new System.Drawing.Size(163, 24);
             this.linkLabel1.TabIndex = 15;
             this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Ste že registrirani? ";
+            this.linkLabel1.Text = "Ste že registrirani?";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(180, 205);
+            this.label2.Location = new System.Drawing.Point(85, 184);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 25);
             this.label2.TabIndex = 17;
@@ -102,7 +104,7 @@
             // 
             // Priimek
             // 
-            this.Priimek.Location = new System.Drawing.Point(305, 209);
+            this.Priimek.Location = new System.Drawing.Point(210, 188);
             this.Priimek.Name = "Priimek";
             this.Priimek.Size = new System.Drawing.Size(178, 22);
             this.Priimek.TabIndex = 16;
@@ -111,7 +113,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(180, 268);
+            this.label4.Location = new System.Drawing.Point(85, 233);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 25);
             this.label4.TabIndex = 19;
@@ -119,7 +121,8 @@
             // 
             // Geslo
             // 
-            this.Geslo.Location = new System.Drawing.Point(305, 272);
+            this.Geslo.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.Geslo.Location = new System.Drawing.Point(210, 237);
             this.Geslo.Name = "Geslo";
             this.Geslo.Size = new System.Drawing.Size(178, 22);
             this.Geslo.TabIndex = 18;
@@ -128,7 +131,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(180, 340);
+            this.label5.Location = new System.Drawing.Point(85, 281);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(53, 25);
             this.label5.TabIndex = 20;
@@ -137,7 +140,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(305, 344);
+            this.comboBox1.Location = new System.Drawing.Point(210, 285);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(178, 24);
             this.comboBox1.TabIndex = 21;
@@ -146,7 +149,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(690, 584);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(481, 511);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);

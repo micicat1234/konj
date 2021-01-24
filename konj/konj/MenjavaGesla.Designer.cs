@@ -42,9 +42,9 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 25.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(223, 41);
+            this.label1.Location = new System.Drawing.Point(76, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(338, 60);
+            this.label1.Size = new System.Drawing.Size(368, 60);
             this.label1.TabIndex = 8;
             this.label1.Text = "Menjava gesla:";
             // 
@@ -52,7 +52,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(236, 274);
+            this.label4.Location = new System.Drawing.Point(80, 272);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(69, 25);
             this.label4.TabIndex = 22;
@@ -62,7 +62,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(236, 211);
+            this.label2.Location = new System.Drawing.Point(80, 209);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 25);
             this.label2.TabIndex = 21;
@@ -72,7 +72,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(236, 150);
+            this.label3.Location = new System.Drawing.Point(80, 148);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(50, 25);
             this.label3.TabIndex = 20;
@@ -81,7 +81,7 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(360, 154);
+            this.comboBox1.Location = new System.Drawing.Point(204, 152);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(168, 24);
             this.comboBox1.TabIndex = 23;
@@ -90,36 +90,39 @@
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(360, 212);
+            this.comboBox2.Location = new System.Drawing.Point(204, 210);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(168, 24);
             this.comboBox2.TabIndex = 24;
             // 
             // Geslo
             // 
-            this.Geslo.Location = new System.Drawing.Point(360, 277);
+            this.Geslo.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.Geslo.Location = new System.Drawing.Point(204, 275);
             this.Geslo.Name = "Geslo";
             this.Geslo.Size = new System.Drawing.Size(168, 22);
             this.Geslo.TabIndex = 25;
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(307, 336);
+            this.button1.BackColor = System.Drawing.SystemColors.Highlight;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button1.Location = new System.Drawing.Point(144, 326);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(155, 48);
+            this.button1.Size = new System.Drawing.Size(185, 89);
             this.button1.TabIndex = 26;
-            this.button1.Text = "Potrdi";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Text = "Spremeni geslo";
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(534, 447);
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Location = new System.Drawing.Point(295, 432);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(207, 25);
+            this.linkLabel1.Size = new System.Drawing.Size(197, 24);
             this.linkLabel1.TabIndex = 27;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Ste se spomnili gesla?";
@@ -129,7 +132,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(774, 498);
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.ClientSize = new System.Drawing.Size(514, 466);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Geslo);

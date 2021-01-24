@@ -118,5 +118,12 @@ namespace konj
             textBox3.Text = "";
             textBox4.Text = "";
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            MainPage japjap = new MainPage();
+            japjap.Show();
+            this.Hide();
+        }
     }
 }

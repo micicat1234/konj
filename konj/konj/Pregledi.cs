@@ -197,6 +197,13 @@ namespace konj
             }
          }
 
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            MainPage japjap = new MainPage();
+            japjap.Show();
+            this.Hide();
+        }
+
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             textBox1.Text = comboBox1.SelectedItem.ToString();

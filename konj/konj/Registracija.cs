@@ -9,18 +9,35 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Npgsql;
 using System.Configuration;
+using System.Security.Cryptography;
 
 namespace konj
 {
     public partial class Registracija : Form
     {
-
+        string hash = "f0xle@rn";
         int id_kraja;
         string connect = BazaConn.connect();
 
         public Registracija()
         {
             InitializeComponent();
+        }
+
+        private string kriptiraj(string geslo)
+        {
+            byte[] data = UTF8Encoding.UTF8.GetBytes(geslo);
+            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
+            {
+                byte[] keys = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(hash));
+                using (TripleDESCryptoServiceProvider tripleDes = new TripleDESCryptoServiceProvider() { Key = keys, Mode = CipherMode.ECB, Padding = PaddingMode.PKCS7 })
+                {
+                    ICryptoTransform transform = tripleDes.CreateEncryptor();
+                    byte[] results = transform.TransformFinalBlock(data, 0, data.Length);
+                    string vrni = Convert.ToBase64String(results, 0, results.Length);
+                    return vrni;
+                }
+            }
         }
 
 
@@ -74,8 +91,11 @@ namespace konj
                 con.Close();
 
                 //vpiše notr
-                con.Open();
-                NpgsqlCommand aha = new NpgsqlCommand("SELECT Registracija('" + Ime.Text + "', '" + Geslo.Text + "', '" + Priimek.Text + "','" + id_kraja + "')", con);
+                con.Open();  
+
+                string kriptirano_geslo = kriptiraj(Geslo.Text);
+
+                NpgsqlCommand aha = new NpgsqlCommand("SELECT Registracija('" + Ime.Text + "', '" + kriptirano_geslo + "', '" + Priimek.Text + "','" + id_kraja + "')", con);
                 aha.ExecuteNonQuery();
                 aha.Dispose();
                 con.Close();
